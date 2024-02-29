@@ -1,0 +1,47 @@
+:root {
+  --dj-color: #0c4b33;
+  --text-color: #808080;
+  --btn-color: #51be95;
+  --hover-color: #56B395;
+  --icon-color: #20aa76;
+  --ft-color: #074835;
+}
+
+body {
+  color: var(--text-color);
+}
+ .navbar {
+  background-color: var(--dj-color);
+ }
+
+.icon-block {
+  padding: 0 15px;
+}
+
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.btn-large {
+  margin-top: 10px;
+  text-transform: none;
+  background-color: var(--btn-color);
+  color: #fff;
+  border-radius: 5px;
+}
+
+.btn-large:hover {
+  background-color: var(--hover-color);
+}
+
+.icon {
+  color: var(--icon-color);
+}
+
+.page-footer {
+  background-color: var(--dj-color);;
+ }
+
+ .footer-bottom {
+  background-color: var(--ft-color);
+ }
