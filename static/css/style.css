@@ -7,12 +7,24 @@
   --ft-color: #074835;
 }
 
-body {
+html, body {
+  height: 100%;
   color: var(--text-color);
 }
+
  .navbar {
   background-color: var(--dj-color);
  }
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+ main.main {
+    flex: 1 1 auto;
+  }
 
 .icon-block {
   padding: 0 15px;
@@ -22,20 +34,84 @@ body {
 	font-size: inherit;
 }
 
-.btn-large {
-  margin-top: 10px;
-  text-transform: none;
+.btn {
+  text-transform: uppercase;
   background-color: var(--btn-color);
   color: #fff;
   border-radius: 5px;
 }
 
-.btn-large:hover {
+.btn-large {
+  margin-top: 10px;
+  text-transform: uppercase;
+  background-color: var(--btn-color);
+  color: #fff;
+  border-radius: 5px;
+}
+
+.btn:hover,.btn-large:hover {
   background-color: var(--hover-color);
+}
+
+.btn-submit {
+  margin-top: 15px;
 }
 
 .icon {
   color: var(--icon-color);
+}
+
+.active {
+  background-color: var(--btn-color);
+}
+
+.post-head {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.post-card {
+  margin-bottom: 40px;
+}
+
+.post-panel {
+  margin-top: 50px;
+}
+
+.post-btn {
+  margin-top: 40px;
+  margin-left: 20px;
+}
+
+.post-warning {
+  margin-top: 40px;
+}
+
+.tags-list {
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.admin-panel {
+  position: fixed;
+  right: 50px;
+  top: 150px;
+  opacity: .8;
+  margin: 0 40px 40px 0;
+  border: 3px solid #51be95;
+}
+
+.admin-panel:hover {
+  opacity: 1;
+}
+
+.admin-panel a {
+  display: block;
+  margin: 5px 0;
+}
+
+a.edit, a.delete {
+  display: none;
 }
 
 .page-footer {

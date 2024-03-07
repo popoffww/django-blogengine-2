@@ -1,0 +1,45 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    {{ tag.title }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+<div class="center-align">
+
+<a href="{% url 'tags_list_url' %}" class="waves-effect waves-light btn post-btn">
+         <i class="material-icons left">fast_rewind</i>
+            Вернуться
+</a>
+
+<a href="{{ tag.get_update_url }}" class="waves-effect waves-light btn post-btn">
+     <i class="material-icons right">edit</i>
+        Изменить тэг
+</a>
+
+<a href="{{ tag.get_delete_url }}" class="waves-effect waves-light btn post-btn">
+     <i class="material-icons right">delete</i>
+        Удалить тэг
+</a>
+
+</div>
+
+  <div class="center-align card-panel post-panel">
+    <span class="black-text flow-text">
+        Посты с "{{ tag.title|title }}" тэгом
+    </span>
+  </div>
+
+{% for post in tag.posts.all %}
+
+{% include 'includes/post_card.html' %}
+
+{% endfor %}
+
+{% endblock content %}
+
+<!--{% if post %}-->
+<!--{% else %}-->
+<!--<p class="center black-text flow-text">Нет постов</p>-->
+<!--{% endif%}-->
+

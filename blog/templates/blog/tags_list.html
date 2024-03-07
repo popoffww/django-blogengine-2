@@ -1,0 +1,37 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    Тэги - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+<div class="center-align">
+
+<a href="{% url 'tag_create_url' %}" class="waves-effect waves-light btn post-btn">
+     <i class="material-icons left">add</i>
+        Создать тэг
+</a>
+
+<a href="{% url 'post_create_url' %}" class="waves-effect waves-light btn post-btn">
+     <i class="material-icons right">add</i>
+        Создать пост
+</a>
+
+</div>
+
+    <h3 class="center-align black-text post-head">Тэги</h3>
+
+{% for tag in tags %}
+
+<a href="{{ tag.get_absolute_url }} ">
+    <div class="tags-list">
+    <h3>
+        {{ tag.title }}
+    </h3>
+    </div>
+</a>
+
+{% endfor %}
+
+{% endblock content %}

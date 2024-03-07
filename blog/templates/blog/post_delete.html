@@ -1,0 +1,40 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+Удаление поста "{{ post.title|title }}" - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'posts_list_url' %}" class="waves-effect waves-light btn post-btn">
+         <i class="material-icons left">fast_rewind</i>
+            Вернуться
+</a>
+
+<div class="post-warning">
+
+<p class="card-panel yellow accent-2 center-align black-text flow-text">
+    Это действие нельзя будет отменить!
+</p>
+
+</div>
+
+<h3 class="center-align black-text post-head">
+    Вы действительно хотите удалить <b>"{{ post.title|title }}"</b> пост?
+</h3>
+
+<form action="{{ tag.get_delete_url }}" method="post">
+  {% csrf_token %}
+
+
+  <div class="center-align">
+
+   <button class="btn waves-effect waves-light btn-submit" type="submit" name="action">
+    Удалить пост
+    <i class="material-icons left">send</i>
+  </button>
+
+  </div>
+
+</form>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    {{ post.title }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+<div class="center-align">
+
+<a href="{% url 'posts_list_url' %}" class="waves-effect waves-light btn post-btn">
+         <i class="material-icons left">fast_rewind</i>
+            Вернуться
+</a>
+
+<a href="{{ post.get_update_url }}" class="waves-effect waves-light btn post-btn">
+     <i class="material-icons right">edit</i>
+        Изменить пост
+</a>
+
+<a href="{{ post.get_delete_url }}" class="waves-effect waves-light btn post-btn">
+     <i class="material-icons right">delete</i>
+        Удалить пост
+</a>
+
+</div>
+
+  <div class="card-panel post-panel">
+    <span class="black-text flow-text">
+        {{ post.body }}
+    </span>
+  </div>
+
+{% endblock content %}

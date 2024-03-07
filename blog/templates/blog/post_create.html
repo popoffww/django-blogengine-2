@@ -1,0 +1,40 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+Создать пост - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'posts_list_url' %}" class="waves-effect waves-light btn post-btn">
+     <i class="material-icons left">fast_rewind</i>
+        Вернуться
+</a>
+
+<h3 class="center-align black-text">Создать пост</h3>
+
+<form class="" action="{% url 'post_create_url' %}" method="post">
+  {% csrf_token %}
+  {% for field in form %}
+  <div class="input-field">
+    {% if field.errors %}
+    <div class="card-panel black-text yellow accent-2">
+      {{ field.errors }}
+    </div>
+    {% endif%}
+    {{ field.label}}
+    {{ field }}
+  </div>
+  {% endfor %}
+
+  <div class="center-align btn-submit">
+
+   <button class="btn waves-effect waves-light btn-submit" type="submit" name="action">
+    Создать пост
+    <i class="material-icons left">send</i>
+  </button>
+
+  </div>
+
+</form>
+{% endblock %}

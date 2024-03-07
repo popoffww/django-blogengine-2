@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>
+    {% block title %}
+    Django Блог
+    {% endblock %}
+  </title>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+</head>
+<body>
+
+{% include 'includes/navbar.html' %}
+
+<div class="wrapper">
+
+{% include 'includes/section.html' %}
+
+<main class="main"></main>
+
+{% block admin-panel %}
+
+<div class="admin-panel">
+
+<a href="/admin" class="waves-effect waves-light btn">
+Админ
+</a>
+
+<a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Создать</a>
+<ul id='dropdown1' class='dropdown-content'>
+<li><a href="{% url 'post_create_url' %}" class="black-text">Пост</a></li>
+<li><a href="{% url 'tag_create_url' %}" class="black-text">Тэг</a></li>
+
+<a href="{{ admin_obj.get_update_url }}" class="waves-effect waves-light btn edit"
+   style="{% if detail %} display: block {% endif %}">
+Изменить
+</a>
+
+<a href="{{ admin_obj.get_delete_url }}" class="waves-effect waves-light btn delete"
+   style="{% if detail %} display: block {% endif %}">
+Удалить
+</a>
+
+</div>
+
+{% endblock admin-panel %}
+
+  {% include 'includes/footer.html' %}
+
+  </div><!--/wrapper-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/init.js' %}"></script>
+
+  </body>
+</html>

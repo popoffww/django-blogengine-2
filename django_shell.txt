@@ -1,0 +1,26 @@
+from blog.models import *
+
+p1=Post(title='Post1',slug='slug1',body='Here must be your news')
+p1.save()
+p1.id
+p1.title
+Post.objects.all()
+Post.objects.values()
+ps=Post.objects.get(slug__iexact='slug1')
+ps=Post.objects.get(slug__contains='slug1')
+ps=Post.objects.filter(slug__contains='slug1')
+ps=Post.objects.get(id='1')
+
+p1=Post.objects.create(title='Post1',slug='slug1',body='Here must be your news')
+p2=Post.objects.create(title='Post2',slug='slug2',body='Here must be your news')
+p3=Post.objects.create(title='Post3',slug='slug3',body='Here must be your news')
+
+t1=Tag(title='news',slug='news')
+t1.save()
+t1=Tag.objects.create(title='news',slug='news')
+ts=Post.objects.get(slug='slug1')
+ts=Post.objects.get(id='1')
+ts.tags
+ts.tags.add(t1)
+t1.posts.all()
+

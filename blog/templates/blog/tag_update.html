@@ -1,0 +1,45 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+Изменение тэга "{{ tag.title|title }}" - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'tags_list_url' %}" class="waves-effect waves-light btn post-btn">
+         <i class="material-icons left">fast_rewind</i>
+            Вернуться
+</a>
+
+<h3 class="center-align black-text post-head">Изменить тэг</h3>
+
+<form action="{{ tag.get_update_url }}" method="post">
+  {% csrf_token %}
+
+  {% for field in form %}
+
+  <div class="input-field">
+
+    {% if field.errors %}
+    <div class="card-panel black-text yellow accent-2">
+      {{ field.errors }}
+    </div>
+    {% endif %}
+
+    {{ field.label }}
+    {{ field }}
+  </div>
+
+  {% endfor %}
+
+  <div class="center-align">
+
+   <button class="btn waves-effect waves-light btn-submit" type="submit" name="action">
+    Изменить тэг
+    <i class="material-icons left">send</i>
+  </button>
+
+  </div>
+
+</form>
+{% endblock %}
