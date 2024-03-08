@@ -88,9 +88,3 @@ class TagDelete(LoginRequiredMixin, ObjectDeleteMixin, View):
     template = 'blog/tag_delete.html'
     redirect_url = 'tags_list_url'
     raise_exception = True
-
-def main_page(request):
-    return render(request, 'blog/main_page.html')
-
-def about_page(request):
-    return render(request, 'blog/about_page.html')
