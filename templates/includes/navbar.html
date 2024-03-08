@@ -1,7 +1,19 @@
 <nav class="navbar" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="{% url 'home' %}" class="brand-logo">Django</a>
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="{% url 'home' %}" class="brand-logo">
+        Django
+      </a>
+
+      <form class="right hide-on-med-and-down" action="{% url 'posts_list_url' %}">
+        <div class="input-field">
+          <input id="search" type="search" placeholder="Поиск по блогу" name="search">
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+
+
       <ul class="right hide-on-med-and-down">
-        <li><a href="admin/">Admin</a></li>
         <li><a href="{% url 'posts_list_url' %}">Посты</a></li>
         <li><a href="{% url 'tags_list_url' %}">Тэги</a></li>
       </ul>

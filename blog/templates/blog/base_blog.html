@@ -34,9 +34,10 @@
 
   </main>
 
-{% block admin-panel %}
-
+{% if request.user.is_authenticated and request.user.is_staff %}
 <div class="admin-panel">
+
+{% block admin-panel %}
 
 <a href="/admin" class="waves-effect waves-light btn">
 Админ
@@ -58,9 +59,10 @@
 Удалить
 </a>
 
-</div>
-
 {% endblock admin-panel %}
+
+</div> <!--/admin-panel-->
+{% endif %}
 
   {% include 'includes/footer.html' %}
 

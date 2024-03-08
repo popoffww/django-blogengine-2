@@ -8,17 +8,39 @@
 
     <h3 class="center-align black-text post-head">Посты</h3>
 
-    <ul class="pagination">
-    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-    <li class="active"><a href="#!">1</a></li>
-    <li class="waves-effect"><a href="#!">2</a></li>
-    <li class="waves-effect"><a href="#!">3</a></li>
-    <li class="waves-effect"><a href="#!">4</a></li>
-    <li class="waves-effect"><a href="#!">5</a></li>
-    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-  </ul>
+<!--is_paginated сработает, если общее кол-во постов меньше, -->
+<!--чем заявленное на странице в файле views.py - paginator = Paginator(posts, 10):-->
+<!--завлено - 10, а всего постов 9 и меньше - пагинация исчезнет-->
 
-{% for post in posts %}
+      {% if is_paginated %}
+        <ul class="pagination">
+        <li class="waves-effect {% if not prev_url %} disabled {% endif %}">
+            <a href="{{ prev_url }}">
+                <i class="material-icons">
+                chevron_left
+                </i>
+            </a>
+        </li>
+
+        {% for n in page_object.paginator.page_range %}
+          {% if page_object.number == n %}
+
+            <li class="active green darken-3"><a href="?page={{ n }}">{{ n }}</a></li>
+            {% elif n > page_object.number|add:-3 and n < page_object.number|add:3 %}
+            <li class=""><a href="?page={{ n }}">{{ n }}</a></li>
+
+            {% endif %}
+            {% endfor %}
+
+        <li class="waves-effect {% if not next_url %} disabled {% endif %}">
+            <a href="{{ next_url }}">
+                <i class="material-icons">chevron_right</i>
+            </a>
+        </li>
+        </ul>
+        {% endif %}
+
+{% for post in page_object.object_list %}
 
 {% include 'includes/post_card.html' %}
 
