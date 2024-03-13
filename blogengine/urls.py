@@ -22,4 +22,5 @@ urlpatterns = [
     # path('', redirect_blog),
     path("admin/", admin.site.urls),
     path("", include('blog.urls')),
+    path('silk/', include('silk.urls', namespace='silk'))
 ]
